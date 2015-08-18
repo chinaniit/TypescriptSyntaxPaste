@@ -21,7 +21,7 @@ namespace RoslynTypeScript.Translation
 
         protected override string InnerTranslate()
         {
-            return Helper.NormalizeVariabeleName(token.ToString());
+            return Helper.NormalizeVariabeleName(token.ToString().ToCamelCase());
         }
 
         public virtual bool IsEmpty

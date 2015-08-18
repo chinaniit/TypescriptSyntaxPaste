@@ -636,5 +636,34 @@ namespace RoslynTypeScript
 
             return false;
         }
+
+        public static string GetPropertyName(this SyntaxToken token)
+        {
+            return token.Text.ToCamelCase();
+        }
+
+        // Convert the string to camel case.
+        public static string ToCamelCase(this string s)
+        {
+            if (string.IsNullOrEmpty(s))
+            {
+                return s;
+            }
+            if (!char.IsUpper(s[0]))
+            {
+                return s;
+            }
+            char[] charArray = s.ToCharArray();
+            for (int i = 0; i < (int)charArray.Length; i++)
+            {
+                bool length = i + 1 < (int)charArray.Length;
+                if (i > 0 && length && !char.IsUpper(charArray[i + 1]))
+                {
+                    break;
+                }
+                charArray[i] = char.ToLowerInvariant(charArray[i]);
+            }
+            return new string(charArray);
+        }
     }
 }

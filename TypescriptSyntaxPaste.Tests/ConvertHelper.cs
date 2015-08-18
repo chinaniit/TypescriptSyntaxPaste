@@ -41,6 +41,9 @@ namespace TypescriptSyntaxPaste.Tests
             var stripTypescriptCode = StripAllSpaces(typescriptCode);
             var converted = ConvertToTypescript(csharpCode);
 
+            Console.WriteLine(stripTypescriptCode);
+            Console.WriteLine(StripAllSpaces(converted));
+
             Assert.AreEqual(stripTypescriptCode, StripAllSpaces(converted));
         }
 

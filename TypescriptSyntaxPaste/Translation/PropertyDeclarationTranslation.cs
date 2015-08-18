@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RoslynTypeScript;
 
 namespace RoslynTypeScript.Translation
 {
@@ -33,14 +34,14 @@ namespace RoslynTypeScript.Translation
             if (found is InterfaceDeclarationTranslation)
             {
                 //return string.Format("{0}: {1}", syntax.Identifier,type.Translate());
-                return $"{Helper.GetAttributeList(Syntax.AttributeLists)}{Syntax.Identifier}: {Type.Translate()} ;";
+                return $"{Helper.GetAttributeList(Syntax.AttributeLists)}{Syntax.Identifier.GetPropertyName()}: {Type.Translate()} ;";
             }
 
             // hmm, if it's in class, much thing to do
 
             if (AccessorList.IsShorten())
             {
-             
+
                 var defaultStr = Helper.GetDefaultValue(Type);
                 if (defaultStr == "null")
                 {
@@ -50,7 +51,7 @@ namespace RoslynTypeScript.Translation
                 {
                     defaultStr = " = " + defaultStr;
                 }
-                return $"{Helper.GetAttributeList(Syntax.AttributeLists)}public {Syntax.Identifier}: {Type.Translate()}{defaultStr} ;";
+                return $"{Helper.GetAttributeList(Syntax.AttributeLists)}public {Syntax.Identifier.GetPropertyName() }: {Type.Translate()}{defaultStr} ;";
             }
 
             return AccessorList.Translate();

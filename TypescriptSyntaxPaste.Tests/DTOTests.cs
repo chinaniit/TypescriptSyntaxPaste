@@ -97,12 +97,12 @@ public class DTO
 ",
 @"
 export class DTO {
-    public Name: string;
-    public Age: number;
-    public IsSingle: boolean;
-    public Distance: number;
-    public LastUpdate: Date;
-    public Money: number;
+    public name: string;
+    public age: number;
+    public isSingle: boolean;
+    public distance: number;
+    public lastUpdate: Date;
+    public money: number;
 }
 ");
         }
@@ -116,8 +116,8 @@ export class DTO {
     public string Field2;
     public string field3;
 }", @"export class DTO {
-    public Field1: string;
-    public Field2: string;
+    public field1: string;
+    public field2: string;
     public field3: string;
 }");
         }
@@ -133,11 +133,11 @@ export class DTO {
     internal string Field4;
     public static string Field5;
 }", @"export class DTO {
-    public Field1: string;
-    private Field2: string;
+    public field1: string;
+    private field2: string;
     protected field3: string;
-    public Field4: string;
-    public static Field5:string;
+    public field4: string;
+    public static field5:string;
 }");
         }
 
@@ -173,15 +173,15 @@ module DataAccess {
 
     export class CompanyEntity         {
 
-            public Name: string;
+            public name: string;
 
-        public Address: string;
+        public address: string;
 
-        public Phone: string;
+        public phone: string;
 
-        public Fax: string;
+        public fax: string;
 
-        public Email: string;
+        public email: string;
     }
 }
 ");
@@ -199,7 +199,7 @@ module DataAccess {
     }
 }", @"export class DTO2 {
     private field1: string;
-    public get Field1(): string {
+    public get field1(): string {
         return this.field1;
     }
 }");
@@ -211,13 +211,13 @@ module DataAccess {
             ConvertHelper.AssertConvertingIgnoreSpaces(@"public class DTO3
 {
     private string field1;
-    public string Field1
+    public string field1
     {
         set { field1 = value; }
     }
 }", @"export class DTO3 {
     private field1: string;
-    public set Field1(value: string) {
+    public set field1(value: string) {
         this.field1 = value;
     }
 }");
@@ -230,7 +230,7 @@ module DataAccess {
 public void Method1()
     {
     }", @"
-public Method1(): void
+public method1(): void
 {
 
 }");
@@ -242,7 +242,7 @@ public Method1(): void
             ConvertHelper.AssertConvertingIgnoreSpaces(@"public int Method1(int a, string b, string c)
     {
 
-    }", @"public Method1(a:number, b:string, c:string): number
+    }", @"public method1(a:number, b:string, c:string): number
 {
 
 }");
@@ -255,7 +255,7 @@ public Method1(): void
 public int Method1<T>(int a, string b, string c)
     {
 
-    }", @"public Method1<T>(a:number, b:string, c:string): number
+    }", @"public method1<T>(a:number, b:string, c:string): number
 {
 
 }");
@@ -267,7 +267,7 @@ public int Method1<T>(int a, string b, string c)
             ConvertHelper.AssertConvertingIgnoreSpaces(@"public int Method1<T>(int a, string b, string c) where T : BaseClass
     {
 
-    }", @"public Method1<T extends BaseClass>(a:number, b:string, c:string): number
+    }", @"public method1<T extends BaseClass>(a:number, b:string, c:string): number
 {
 
 }");
@@ -287,7 +287,7 @@ public class DTO5
     }
 }", @"
 export class DTO5 {
-    public Method(): void {
+    public method(): void {
         var a: number;
         var b: string;
         var e: DTO5;
@@ -308,7 +308,7 @@ export class DTO5 {
         }
     }", @"
 export class DTO5 {
-    public Method(): void {
+    public method(): void {
         var a: number = 1;
         var b: string = ""a"";
         var e: DTO5 = null;
@@ -359,7 +359,7 @@ export class DTO5 {
         obj = new DTO5();
     }
 }", @"export class DTO5 {
-    public Method(): void {
+    public method(): void {
         var obj: DTO5;
         obj = new DTO5();
     }
@@ -376,7 +376,7 @@ export class DTO5 {
         var a = new DTO6(1,b,c);
     }
 }", @"export class DTO7 {
-    public Method1(): void {
+    public method1(): void {
         var a = new DTO6(1, b, c);
     }
 }");
@@ -396,7 +396,7 @@ export class DTO5 {
     }
 }", @"export class DTO7 {
     private field: number = 0;
-    public Method1(): void {
+    public method1(): void {
         var localVariable = 1;
         this.field = 1;
         localVariable = 2;
